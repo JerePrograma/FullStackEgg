@@ -1,4 +1,4 @@
-package eggprojects.Guia3;
+package eggprojects.Guia3.Ejercicios;
 
 import java.util.Scanner;
 

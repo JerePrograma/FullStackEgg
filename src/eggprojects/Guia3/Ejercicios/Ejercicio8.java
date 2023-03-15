@@ -5,7 +5,7 @@ Por ejemplo, si el cuadrado tiene 4 elementos por lado se deberá dibujar lo sig
 *     *
 * * * *
  */
-package eggprojects.Guia3;
+package eggprojects.Guia3.Ejercicios;
 
 import java.util.Scanner;
 

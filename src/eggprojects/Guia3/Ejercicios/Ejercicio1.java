@@ -1,4 +1,4 @@
-package eggprojects.Guia3;
+package eggprojects.Guia3.Ejercicios;
 
 import java.util.Scanner;
 /*Crear un programa que dado un número determine si es par o impar.*/
