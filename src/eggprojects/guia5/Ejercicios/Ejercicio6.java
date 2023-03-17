@@ -11,11 +11,15 @@ public class Ejercicio6 {
     public static void main(String[] args) {
         int[][] matrizMagica = new int[3][3];
 
-        llenarMatriz(matrizMagica);
-        boolean esMAaaaagico = (!esMagica(matrizMagica));
-        while (esMAaaaagico) {
+        
+
+        while (true) {
+            llenarMatriz(matrizMagica);
             mostrarMatriz(matrizMagica);
-            esMagica(matrizMagica);
+            System.out.println("");
+            if (esMagica(matrizMagica)) {
+                break;
+            }
         }
     }
 
@@ -24,10 +28,7 @@ public class Ejercicio6 {
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
-                matriz[i][j] = random.nextInt(2 - 1 + 1) + 1;
-                if (matriz[i][j] == 0) {
-                    matriz[i][j] = 1;
-                }
+                matriz[i][j] = random.nextInt(9 - 1 + 1) + 1;
             }
         }
     }
