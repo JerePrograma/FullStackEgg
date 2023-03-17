@@ -7,6 +7,8 @@ El cambio de divisas es:
 * 129.852 yenes es un 1 € */
 package eggprojects.Guia4.Ejercicios;
 
+import java.util.Scanner;
+
 public class Ejercicio3 {
 
     /**
@@ -17,6 +19,7 @@ public class Ejercicio3 {
      * ningún valor y mostrará un mensaje indicando el cambio 0.86 libras es un
      * 1 € 1.28611 $ es un 1 € 129.852 yenes es un 1 €
      *
+     * @param args
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
