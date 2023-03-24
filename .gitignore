@@ -1,6 +1,0 @@
-# Ignorar todos los archivos
-*
-# No ignorar el archivo .gitignore
-!.gitignore
-# No ignorar archivos en la carpeta src
-!src/**
