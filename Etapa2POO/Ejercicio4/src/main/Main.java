@@ -13,8 +13,8 @@ public class Main {
     public static void main(String[] args) {
         Rectangulo rectangulo = new Rectangulo();
 
-        Rectangulo.crearRectangulo(rectangulo);
-        Rectangulo.calcularSuperficie(rectangulo);
-        Rectangulo.calcularPerimetro(rectangulo);
+        rectangulo.crearRectangulo();
+        rectangulo.calcularSuperficie();
+        rectangulo.calcularPerimetro();
     }
 }

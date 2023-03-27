@@ -8,7 +8,7 @@ Crear un método para cargar un libro pidiendo los datos al usuario y luego
 informar mediante otro método el número de ISBN, el título, el autor del libro y el número de páginas.*/
 public class Libro {
 
-    public  int ISBN;
+    public int ISBN;
     public String titulo;
     public String autor;
     public int paginas;
@@ -55,22 +55,22 @@ public class Libro {
         this.paginas = paginas;
     }
 
-    public static void cargarLibro(Libro libro) {
+    public void cargarLibro() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Ingrese el ISBN del libro");
-        libro.setISBN(leer.nextInt());
+        this.ISBN = (leer.nextInt());
         System.out.println("Ingrese el título");
-        libro.setTitulo(leer.next());
+        this.titulo = (leer.next());
         System.out.println("Ingrese el autor");
-        libro.setAutor(leer.next());
+        this.autor = (leer.next());
         System.out.println("Ingrese el número de páginas");
-        libro.setPaginas(leer.nextInt());
+        this.paginas = (leer.nextInt());
     }
 
-    public static void mostrarLibro(Libro libro) {
-        System.out.println("El ISBN del libro es: " + libro.getISBN());
-        System.out.println("El título es: " + libro.getTitulo());
-        System.out.println("El autor es: " + libro.getAutor());
-        System.out.println("El número de páginas es: " + libro.getPaginas());
+    public void mostrarLibro() {
+        System.out.println("El ISBN del libro es: " + this.ISBN);
+        System.out.println("El título es: " + this.titulo);
+        System.out.println("El autor es: " + this.autor);
+        System.out.println("El número de páginas es: " + this.paginas);
     }
 }

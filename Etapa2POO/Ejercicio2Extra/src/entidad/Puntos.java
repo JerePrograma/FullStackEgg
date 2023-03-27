@@ -56,18 +56,18 @@ public class Puntos {
         this.y2 = y2;
     }
 
-    public static void crearPuntos(Puntos puntos) {
+    public void crearPuntos() {
         Scanner leer = new Scanner(System.in);
         System.out.println("Ingrese las coordenadas de X");
-        puntos.setX1(leer.nextInt());
-        puntos.setX2(leer.nextInt());
+        this.x1 = (leer.nextInt());
+        this.x2 = (leer.nextInt());
         System.out.println("Ingrese la coordenada Y");
-        puntos.setY1(leer.nextInt());
-        puntos.setY2(leer.nextInt());
+        this.y1 = (leer.nextInt());
+        this.y2 = (leer.nextInt());
     }
 
-    public static void distanciaEntrePuntos(Puntos puntos) {
-        double distancia = Math.sqrt((Math.pow((puntos.x2 - puntos.x1), 2)) + (Math.pow((puntos.y2 - puntos.y1), 2)));
+    public void distanciaEntrePuntos() {
+        double distancia = Math.sqrt((Math.pow((this.x2 - this.x1), 2)) + (Math.pow((this.y2 - this.y1), 2)));
         System.out.println("La distancia en " + distancia);
     }
 

@@ -10,14 +10,13 @@ Método para crearCircunferencia(): que le pide el radio y lo guarda  en el atri
 Método area(): para calcular el área de la circunferencia (Area=〖π*radio〗^2).
 Método perimetro(): para calcular el perímetro (Perimetro=2*π*radio).*/
 public class Main {
+
     public static void main(String[] args) {
         Circunferencia circulo1 = new Circunferencia();
-        
-        
-        Circunferencia.crearCircunferencia(circulo1);
-        Circunferencia.area(circulo1);
-        Circunferencia.perimetro(circulo1);
-        
-        
+
+        circulo1.crearCircunferencia();
+        circulo1.area();
+        circulo1.perimetro();
+
     }
 }

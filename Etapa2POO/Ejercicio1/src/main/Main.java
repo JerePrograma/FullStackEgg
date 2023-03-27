@@ -12,8 +12,8 @@ informar mediante otro método el número de ISBN, el título, el autor del libr
         Libro primerLibro = new Libro(12321, "Esta noche digo adios", "Jeremias", 234);
         Libro segundoLibro = new Libro();
         
-        Libro.cargarLibro(segundoLibro);
-        Libro.mostrarLibro(segundoLibro);
-        Libro.mostrarLibro(primerLibro);
+        segundoLibro.cargarLibro();
+        segundoLibro.mostrarLibro();
+        primerLibro.mostrarLibro();
     }
 }

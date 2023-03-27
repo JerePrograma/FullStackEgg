@@ -18,10 +18,10 @@ public class Main {
     public static void main(String[] args) {
         Operacion operacion1 = new Operacion();
 
-        Operacion.crearOperacion(operacion1);
-        Operacion.sumar(operacion1);
-        Operacion.restar(operacion1);
-        Operacion.multiplicar(operacion1);
-        Operacion.dividir(operacion1);
+        operacion1.crearOperacion();
+        operacion1.sumar();
+        operacion1.restar();
+        operacion1.multiplicar();
+        operacion1.dividir();
     }
 }

@@ -28,19 +28,19 @@ public class Circunferencia {
         this.radio = radio;
     }
 
-    public static void crearCircunferencia(Circunferencia circulo) {
+    public void crearCircunferencia() {
         Scanner leer = new Scanner(System.in);
         System.out.println("Ingrese el radio del objeto");
-        circulo.setRadio(leer.nextInt());
+        this.radio = (leer.nextDouble());
     }
 
-    public static void area(Circunferencia circulo) {
-        double area = Math.PI * (Math.pow(circulo.getRadio(), 2));
+    public void area() {
+        double area = Math.PI * (Math.pow(this.radio, 2));
         System.out.println("El área del círculo es: " + area);
     }
-    
-        public static void perimetro(Circunferencia circulo) {
-        double perimetro = Math.PI * circulo.radio * 2;
+
+    public void perimetro() {
+        double perimetro = Math.PI * this.radio * 2;
         System.out.println("El área del círculo es: " + perimetro);
     }
 }

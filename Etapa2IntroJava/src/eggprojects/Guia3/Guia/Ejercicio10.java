@@ -10,12 +10,9 @@ public class Ejercicio10 {
         Scanner leer = new Scanner(System.in);
         int cantidad = 10;
         String numCadena = "";
-        String num;
-        int valorCadena;
         for (int j = 0; j < cantidad; j++) {
             System.out.println("Ingrese un número");
-            num = leer.next();
-            numCadena += num;
+            numCadena += leer.next();
         }
         for (int i = 0; i < cantidad; i++) {
             System.out.print(Integer.valueOf(numCadena.substring(i, i + 1)));

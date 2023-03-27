@@ -37,21 +37,21 @@ public class Rectangulo {
         this.altura = altura;
     }
 
-    public static void crearRectangulo(Rectangulo rectangulo) {
+    public void crearRectangulo() {
         Scanner leer = new Scanner(System.in);
         System.out.println("Ingrese la base");
-        rectangulo.setBase(leer.nextInt());
+        this.base = (leer.nextInt());
         System.out.println("Ingrese la altura");
-        rectangulo.setAltura(leer.nextInt());
+        this.altura = (leer.nextInt());
     }
 
-    public static void calcularSuperficie(Rectangulo rectangulo) {
-        int superficie = rectangulo.getBase() * rectangulo.getAltura();
+    public void calcularSuperficie() {
+        int superficie = this.base * this.altura;
         System.out.println("La superficie del rectángulo es: " + superficie);
     }
 
-    public static void calcularPerimetro(Rectangulo rectangulo) {
-        int perimetro = (rectangulo.getBase() + rectangulo.getAltura()) * 2;
+    public void calcularPerimetro() {
+        int perimetro = (this.base + this.altura) * 2;
         System.out.println("La superficie del rectángulo es: " + perimetro);
     }
 }

@@ -11,8 +11,12 @@ public class Ejercicio11 {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Ingrese una palabra o frase");
-        cambiarLetras(leer.next());
+        String palabra;
+        do {
+            System.out.println("Ingrese una palabra o frase que termine con un punto:");
+            palabra = leer.nextLine();
+        } while (!palabra.endsWith("."));
+        cambiarLetras(palabra);
     }
 
     public static void cambiarLetras(String palabra) {
@@ -22,26 +26,26 @@ public class Ejercicio11 {
             switch (palabra.substring(i, i + 1)) {
                 case "a":
                 case "A":
-                    palabraAuxiliar += "@";
+                    palabraAuxiliar = palabraAuxiliar.concat("@");
                     break;
                 case "e":
                 case "E":
-                    palabraAuxiliar += "#";
+                    palabraAuxiliar = palabraAuxiliar.concat("#");
                     break;
                 case "i":
                 case "I":
-                    palabraAuxiliar += "$";
+                    palabraAuxiliar = palabraAuxiliar.concat("$");
                     break;
                 case "o":
                 case "O":
-                    palabraAuxiliar += "%";
+                    palabraAuxiliar = palabraAuxiliar.concat("%");
                     break;
                 case "u":
                 case "U":
-                    palabraAuxiliar += "*";
+                    palabraAuxiliar = palabraAuxiliar.concat("*");
                     break;
                 default:
-                    palabraAuxiliar += palabra.substring(i, i + 1);
+                    palabraAuxiliar = palabraAuxiliar.concat(palabra.substring(i, i + 1));
             }
         }
         System.out.println("La palabra cambiada es: " + palabraAuxiliar);

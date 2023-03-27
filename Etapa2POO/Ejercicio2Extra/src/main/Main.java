@@ -8,10 +8,10 @@ Después, a través de otro método calcular y devolver la distancia que existe 
 Para conocer como calcular la distancia entre dos puntos consulte el siguiente link:
 http://www.matematicatuya.com/GRAFICAecuaciones/S1a.html */
 public class Main {
-    
+
     public static void main(String[] args) {
         Puntos puntos1 = new Puntos();
-        Puntos.crearPuntos(puntos1);
-        Puntos.distanciaEntrePuntos(puntos1);
+        puntos1.crearPuntos();
+        puntos1.distanciaEntrePuntos();
     }
 }
