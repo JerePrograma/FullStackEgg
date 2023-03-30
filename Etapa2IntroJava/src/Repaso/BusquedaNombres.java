@@ -1,16 +1,5 @@
 package Repaso;
 
-/*Simular la división usando solamente restas. Dados dos números enteros mayores que uno, 
-realizar un algoritmo que calcule el cociente y el residuo usando sólo restas. Método: 
-Restar el dividendo del divisor hasta obtener un resultado menor que el divisor, 
-este resultado es el residuo, y el número de restas realizadas es el cociente.
-Por ejemplo: 50 / 13:
-50 – 13 = 37     una resta realizada
-37 – 13 = 24     dos restas realizadas
-24 – 13 = 11     tres restas realizadas
-dado que 11 es menor que 13, entonces: el residuo es 11 y el cociente es 3.*/
-import java.util.Scanner;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,7 +55,7 @@ public class BusquedaNombres {
 
         ArrayList<String> nombres = new ArrayList<>();
         cargarNombres(nombres, N);
-
+        ArrayList<Integer> indices = new ArrayList<>();
         String opcion = "";
         while (!opcion.equalsIgnoreCase("salir")) {
             System.out.println("Opciones:");
@@ -74,7 +63,6 @@ public class BusquedaNombres {
             System.out.println("2. Copiar todos");
             System.out.println("3. Mostrar datos");
             System.out.println("Escriba 'salir' para terminar");
-
             opcion = scanner.nextLine();
 
             switch (opcion) {
@@ -91,7 +79,7 @@ public class BusquedaNombres {
                 case "2":
                     System.out.println("Ingrese el nombre a buscar:");
                     nombreBuscado = scanner.nextLine();
-                    ArrayList<Integer> indices = copiarTodos(nombres, nombreBuscado);
+                    indices = copiarTodos(nombres, nombreBuscado);
                     System.out.println("Índices copiados.");
                     break;
                 case "3":
