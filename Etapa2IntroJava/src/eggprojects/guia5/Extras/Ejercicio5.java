@@ -19,9 +19,9 @@ public class Ejercicio5 {
                 suma += matriz[i][j];
             }
         }
-        for (int i = 0; i < matriz.length; i++) {
+        for (int[] ints : matriz) {
             for (int j = 0; j < m; j++) {
-                System.out.print("[" + matriz[i][j] + "]");
+                System.out.print("[" + ints[j] + "]");
             }
             System.out.println();
         }

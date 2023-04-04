@@ -31,26 +31,36 @@ public class Juego {
     }
 
     public void iniciar_juego() {
-        Scanner leer = new Scanner(System.in);
-        System.out.println("Ingresa la cantidad de intentos para adivinar");
-        this.cantidadIntentos = leer.nextInt();
-        System.out.println("Jugador 1: Elige el número a adivinar");
-        this.numeroAdivinar = leer.nextInt();
-        int contador = 1;
+        boolean respuesta = true;
         do {
-            System.out.println("Jugador 2: Ingrese un número para adivinar");
-            this.numeroIngresado = leer.nextInt();
-            if (numeroIngresado > numeroAdivinar) {
-                System.out.println("Más bajo");
-            } else if (numeroIngresado < numeroAdivinar) {
-                System.out.println("Más alto");
+            Scanner leer = new Scanner(System.in);
+            System.out.println("Ingresa la cantidad de intentos para adivinar");
+            this.cantidadIntentos = leer.nextInt();
+            System.out.println("Jugador 1: Elige el número a adivinar");
+            this.numeroAdivinar = leer.nextInt();
+            int contador = 1;
+            do {
+                System.out.println("Jugador 2: Ingrese un número para adivinar");
+                this.numeroIngresado = leer.nextInt();
+                if (numeroIngresado > numeroAdivinar) {
+                    System.out.println("Más bajo");
+                } else if (numeroIngresado < numeroAdivinar) {
+                    System.out.println("Más alto");
+                }
+                contador++;
+            } while (contador < cantidadIntentos && numeroAdivinar != numeroIngresado);
+            if (numeroAdivinar != numeroIngresado) {
+                System.out.println("No adivinaste :c");
+            } else {
+                System.out.println("Adivinaste!!!");
             }
-            contador++;
-        } while (contador < cantidadIntentos && numeroAdivinar != numeroIngresado);
-        if (numeroAdivinar != numeroIngresado) {
-            System.out.println("No adivinaste :c");
-        } else {
-            System.out.println("Adivinaste!!!");
-        }
+
+            System.out.println("¿Desea finalizar el juego? (NO para salir)");
+            String respu = leer.next();
+            if (respu.equalsIgnoreCase("NO")) {
+                respuesta = false;
+            }
+        } while (respuesta);
+
     }
 }
