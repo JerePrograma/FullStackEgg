@@ -8,14 +8,12 @@ public class CadenaServicio {
         int cont = 0;
         for (int i = 0; i < frase.getLongitudFrase(); i++) {
             switch (frase.getFrase().substring(i, i + 1).toLowerCase()) {
-
                 case "a":
                 case "e":
                 case "i":
                 case "o":
                 case "u":
                     cont++;
-
             }
 
         }

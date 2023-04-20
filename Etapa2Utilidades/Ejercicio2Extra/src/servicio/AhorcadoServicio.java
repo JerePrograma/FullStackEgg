@@ -52,7 +52,6 @@ public class AhorcadoServicio {
                 break;
             }
         } while (true);
-
     }
 
     public int longitud(String palabra) {
