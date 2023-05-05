@@ -1,4 +1,4 @@
-package ejercicio1y2;
+package main;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,13 +34,13 @@ ordenada. Si el perro no se encuentra en la lista, se le informará al usuario y
 la lista ordenada.*/
         System.out.println("Ingrese el nombre de la raza que desea eliminar");
         String razaEliminar = leer.next().toUpperCase();
-        boolean eliminado = true;
+        boolean noEncontrado = true;
         Iterator it = razaPerros.iterator();
         System.out.println("---------------------------------");
         while (it.hasNext()) {
             if (it.next().equals(razaEliminar)) {
                 it.remove();
-                eliminado = false;
+                noEncontrado = false;
                 break;
             }
         }
@@ -48,7 +48,7 @@ la lista ordenada.*/
         for (String razaPerro : razaPerros) {
             System.out.println(razaPerro);
         }
-        if (eliminado) {
+        if (noEncontrado) {
             System.out.println("NO se encontró la raza que desea eliminar");
         }
 
