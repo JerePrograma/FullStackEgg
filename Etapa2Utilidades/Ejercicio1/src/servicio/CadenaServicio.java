@@ -15,9 +15,8 @@ public class CadenaServicio {
                 case "u":
                     cont++;
             }
-
         }
-        System.out.println("la cantidad de vocales son: " + cont);
+        System.out.println("La cantidad de vocales son: " + cont);
     }
 
     public void invertirFrase(Cadena frase) {

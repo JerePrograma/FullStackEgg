@@ -5,7 +5,7 @@ Las secuencias leídas que respeten el formato se consideran correctas, la secue
 y toda secuencia distinta de FDE, que no respete el formato se considera incorrecta.
 Al finalizar el proceso, se imprime un informe indicando la cantidad de lecturas correctas e incorrectas recibidas. 
 Para resolver el ejercicio deberá investigar cómo se utilizan las siguientes funciones de Java Substring(), Length(), equals().*/
-package eggprojects.Guia3.Ejercicios;
+package eggprojects.guia3.Ejercicios;
 
 import java.util.Scanner;
 

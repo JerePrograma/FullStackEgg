@@ -8,11 +8,11 @@ public class Main {
     public static void main(String[] args) {
         CadenaServicio cad = new CadenaServicio();
 
-        Cadena c = new Cadena("Casa blanca");
+        Cadena cadena1 = new Cadena("Casa blanca");
 
-        cad.mostrarVocales(c);
+        cad.mostrarVocales(cadena1);
 
-        cad.invertirFrase(c);
+        cad.invertirFrase(cadena1);
 
     }
 

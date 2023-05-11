@@ -1,4 +1,4 @@
-package eggprojects.Guia2;
+package eggprojects.guia2;
 
 /*Escribir un programa que lea un número entero por teclado
 y muestre por pantalla el doble, el triple y la raíz cuadrada de ese número. 

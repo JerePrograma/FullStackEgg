@@ -1,4 +1,4 @@
-package eggprojects.Guia2;
+package eggprojects.guia2;
 
 import java.util.Scanner;
 

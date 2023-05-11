@@ -4,7 +4,7 @@ El programa deberá ejecutarse hasta que se elija la opción 5.
 Tener en cuenta que, si el usuario selecciona la opción 5, en vez de salir del programa directamente, 
 se debe mostrar el siguiente mensaje de confirmación: ¿Está seguro que desea salir del programa (S/N)? 
 Si el usuario selecciona el carácter ‘S’ se sale del programa, caso contrario se vuelve a mostrar el menú.*/
-package eggprojects.Guia3.Ejercicios;
+package eggprojects.guia3.Ejercicios;
 
 import java.util.Scanner;
 
