@@ -1,6 +1,7 @@
-//Crear una clase llamada Alumno que mantenga información sobre las notas de distintos
-//alumnos. La clase Alumno tendrá como atributos, su nombre y una lista de tipo Integer
-//con sus 3 notas.
+/*Crear una clase llamada Alumno que mantenga información sobre las notas de distintos
+alumnos. La clase Alumno tendrá como atributos, su nombre y una lista de tipo Integer
+con sus 3 notas.
+ */
 package entidad;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "nombre=" + nombre + ", notas=" + notas.toString() + '}';
+        return "nombre=" + nombre + ", notas=" + notas + '}';
     }
 
 }

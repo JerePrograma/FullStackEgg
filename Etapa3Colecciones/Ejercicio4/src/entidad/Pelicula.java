@@ -1,4 +1,4 @@
-/*Para esto, tendremos una clase Pelicula con el título, director y duración de la película (en horas).
+/*Para esto,tendremos una clase Pelicula con el título, director y duración de la película (en duracion).
  */
 package entidad;
 
@@ -7,16 +7,17 @@ import java.util.Comparator;
 public class Pelicula {
 
     private String titulo;
+
     private String director;
-    private Integer duracion;
+    private Double duracion;
 
-    public Pelicula() {
-    }
-
-    public Pelicula(String titulo, String director, Integer pelicula) {
+    public Pelicula(String titulo, String director, Double horas) {
         this.titulo = titulo;
         this.director = director;
-        this.duracion = pelicula;
+        this.duracion = horas;
+    }
+
+    public Pelicula() {
     }
 
     public String getTitulo() {
@@ -35,12 +36,17 @@ public class Pelicula {
         this.director = director;
     }
 
-    public Integer getDuracion() {
+    public Double getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Integer pelicula) {
-        this.duracion = pelicula;
+    public void setDuracion(Double horas) {
+        this.duracion = horas;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" + "titulo=" + titulo + ", director=" + director + ", horas=" + duracion + '}';
     }
 
     public static Comparator<Pelicula> compararDuracion = new Comparator<Pelicula>() {
@@ -55,11 +61,10 @@ public class Pelicula {
             return p1.getTitulo().compareTo(p2.getTitulo());
         }
     };
-    public static Comparator<Pelicula> comprarDirector = new Comparator<Pelicula>() {
+    public static Comparator<Pelicula> compararDirector = new Comparator<Pelicula>() {
         @Override
         public int compare(Pelicula p1, Pelicula p2) {
             return p1.getDirector().compareTo(p2.getDirector());
         }
     };
-
 }
