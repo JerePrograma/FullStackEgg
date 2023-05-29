@@ -66,34 +66,66 @@ incrementará el precio un 30% y si tiene un sintonizador TDT incorporado, aumen
 $500. Recuerda que las condiciones que hemos visto en la clase Electrodomestico
 también deben afectar al precio.
 
-
-
-
 Finalmente, en el main debemos realizar lo siguiente:
 Vamos a crear una Lavadora y un Televisor y llamar a los métodos necesarios para mostrar
 el precio final de los dos electrodomésticos.
  */
+//EJERCICIO 3
+//Siguiendo el ejercicio anterior, en el main vamos a crear un ArrayList de Electrodomésticos
+//para guardar 4 electrodomésticos, ya sean lavadoras o televisores, con valores ya asignados.
+//Luego, recorrer este array y ejecutar el método precioFinal() en cada electrodoméstico. Se
+//deberá también mostrar el precio de cada tipo de objeto, es decir, el precio de todos los
+//televisores y el de las lavadoras. Una vez hecho eso, también deberemos mostrar, la suma del
+//precio de todos los Electrodomésticos. Por ejemplo, si tenemos una lavadora con un precio de
+//2000 y un televisor de 5000, el resultado final será de 7000 (2000+5000) para
+//electrodomésticos, 2000 para lavadora y 5000 para televisor.
 package main;
 
+import entidad.Electrodomestico;
 import entidad.Lavadora;
 import entidad.Televisor;
+import java.util.ArrayList;
+import java.util.Scanner;
 import servicio.LavadoraServicio;
 import servicio.TelevisorServicio;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        ArrayList<Electrodomestico> electrodomesticos = new ArrayList();
         LavadoraServicio ls = new LavadoraServicio();
         TelevisorServicio ts = new TelevisorServicio();
-        System.out.println("Creamos lavadora");
-        Lavadora lavadora = ls.crearLavadora();
-        System.out.println("Creamos televisor");
-        Televisor televisor = ts.crearTelevisor();
-        ls.precioFinal(lavadora);
-        ts.precioFinal(televisor);
+        for (int i = 0; i < 4; i++) {
+            System.out.println("1- Crear lavadora");
+            System.out.println("2- Crear televisor");
+            switch (leer.nextInt()) {
+                case 1:
+                    electrodomesticos.add(ls.crearLavadora());
+                    break;
+                case 2:
+                    electrodomesticos.add(ts.crearTelevisor());
+                    break;
+            }
+        }
+        double precioFinalTele = 0;
+        double precioFinalLavadora = 0;
+        for (Electrodomestico electrodomestico : electrodomesticos) {
+            if (electrodomestico instanceof Lavadora) {
+                Lavadora lavadora = (Lavadora) electrodomestico;
+                double precioLavadora = ls.precioFinal(lavadora);
+                precioFinalLavadora += precioLavadora;
+                System.out.println("El precio de la lavadora es de: " + precioLavadora);
+            } else if (electrodomestico instanceof Televisor) {
+                Televisor televisor = (Televisor) electrodomestico;
+                double precioTele = ts.precioFinal(televisor);
+                precioFinalTele += precioTele;
+                System.out.println("El precio del tele es de: " + precioTele);
+            }
+        }
 
-        System.out.println(televisor);
-        System.out.println(lavadora);
+        System.out.println("El monto final por los televisores es de " + precioFinalTele);
+        System.out.println("El monto final por las lavadoras es de " + precioFinalLavadora);
     }
 
 }

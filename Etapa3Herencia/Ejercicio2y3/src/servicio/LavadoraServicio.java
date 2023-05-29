@@ -22,11 +22,11 @@ public class LavadoraServicio extends ElectrodomesticoServicio {
         return new Lavadora(elec.getPrecio(), elec.getColor(), elec.getConsumoEnergetico(), elec.getPeso(), carga);
     }
 
-    public void precioFinal(Lavadora lavadora) {
+    public double precioFinal(Lavadora lavadora) {
         super.precioFinal(lavadora);
         if (lavadora.getCarga() > 30) {
             lavadora.setPrecio(lavadora.getPrecio() + 500);
         }
-        System.out.println("El precio final de la lavadora es: " + lavadora.getPrecio());
+        return lavadora.getPrecio();
     }
 }

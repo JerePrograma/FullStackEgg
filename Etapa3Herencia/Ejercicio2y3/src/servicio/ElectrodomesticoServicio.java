@@ -61,7 +61,7 @@ public class ElectrodomesticoServicio {
 //Entre 20 y 49 kg $500
 //Entre 50 y 79 kg $800
 //Mayor que 80 kg $1000
-    public void precioFinal(Electrodomestico electrodomestico) {
+    public double precioFinal(Electrodomestico electrodomestico) {
         switch (electrodomestico.getConsumoEnergetico()) {
             case 'A':
                 electrodomestico.setPrecio(electrodomestico.getPrecio() + 1000);
@@ -92,5 +92,6 @@ public class ElectrodomesticoServicio {
         } else {
             electrodomestico.setPrecio(electrodomestico.getPrecio() + 1000);
         }
+        return electrodomestico.getPrecio();
     }
 }
