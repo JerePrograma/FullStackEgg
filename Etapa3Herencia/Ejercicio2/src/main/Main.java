@@ -18,18 +18,18 @@ precio se le da un valor base de $1000.
 • Método precioFinal(): según el consumo energético y su tamaño, aumentará el valor del
 precio. Esta es la lista de precios:
 LETRA PRECIO
-A $1000
-B $800
-C $600
-D $500
-E $300
-F $100
-
-PESO PRECIO
-Entre 1 y 19 kg $100
-Entre 20 y 49 kg $500
-Entre 50 y 79 kg $800
-Mayor que 80 kg $1000
+//A $1000
+//B $800
+//C $600
+//D $500
+//E $300
+//F $100
+//
+//PESO PRECIO
+//Entre 1 y 19 kg $100
+//Entre 20 y 49 kg $500
+//Entre 50 y 79 kg $800
+//Mayor que 80 kg $1000
 
 A continuación, se debe crear una subclase llamada Lavadora, con el atributo carga,
 además de los atributos heredados.
@@ -65,12 +65,35 @@ funcionalidad. Si el televisor tiene una resolución mayor de 40 pulgadas, se
 incrementará el precio un 30% y si tiene un sintonizador TDT incorporado, aumentará
 $500. Recuerda que las condiciones que hemos visto en la clase Electrodomestico
 también deben afectar al precio.
+
+
+
+
 Finalmente, en el main debemos realizar lo siguiente:
 Vamos a crear una Lavadora y un Televisor y llamar a los métodos necesarios para mostrar
 el precio final de los dos electrodomésticos.
  */
 package main;
 
+import entidad.Lavadora;
+import entidad.Televisor;
+import servicio.LavadoraServicio;
+import servicio.TelevisorServicio;
+
 public class Main {
+
+    public static void main(String[] args) {
+        LavadoraServicio ls = new LavadoraServicio();
+        TelevisorServicio ts = new TelevisorServicio();
+        System.out.println("Creamos lavadora");
+        Lavadora lavadora = ls.crearLavadora();
+        System.out.println("Creamos televisor");
+        Televisor televisor = ts.crearTelevisor();
+        ls.precioFinal(lavadora);
+        ts.precioFinal(televisor);
+
+        System.out.println(televisor);
+        System.out.println(lavadora);
+    }
 
 }

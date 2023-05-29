@@ -19,24 +19,24 @@
 //precio. Esta es la lista de precios:
 package entidad;
 
-abstract class Electrodomestico {
+public class Electrodomestico {
 
-    private double precio;
-    private String color;
-    private char consumoEnergetico;
-    private int peso;
+    protected double precio;
+    protected String color;
+    protected char consumoEnergetico;
+    protected int peso;
 
     public Electrodomestico() {
         this.precio = 0;
         this.color = "";
-        this.consumoEnergetico = 'F';
+        this.consumoEnergetico = 'Q';
         this.peso = 0;
     }
 
     public Electrodomestico(double precio, String color, char consumoEnergetico, int peso) {
         this.precio = precio;
         this.color = color;
-        this.consumoEnergetico = comprobarConsumoEnergetico(consumoEnergetico);
+        this.consumoEnergetico = consumoEnergetico;
         this.peso = peso;
     }
 
@@ -61,7 +61,7 @@ abstract class Electrodomestico {
     }
 
     public void setConsumoEnergetico(char consumoEnergetico) {
-        this.consumoEnergetico = comprobarConsumoEnergetico(consumoEnergetico);
+        this.consumoEnergetico = consumoEnergetico;
     }
 
     public int getPeso() {
@@ -72,31 +72,9 @@ abstract class Electrodomestico {
         this.peso = peso;
     }
 
-    //• Método comprobarConsumoEnergetico(char letra): comprueba que la letra es correcta,
-//sino es correcta usara la letra F por defecto. Este método se debe invocar al crear el
-//objeto y no será visible.
-    public char comprobarConsumoEnergetico(char letra) {
-        if (letra >= 'A' && letra <= 'F') {
-            return letra;
-        } else {
-            return 'F';
-        }
+    @Override
+    public String toString() {
+        return "Electrodomestico{" + "precio=" + precio + ", color=" + color + ", consumoEnergetico=" + consumoEnergetico + ", peso=" + peso + '}';
     }
-//• Método comprobarColor(String color): comprueba que el color es correcto, y si no lo es,
-//usa el color blanco por defecto. Los colores disponibles para los electrodomésticos son
-//blanco, negro, rojo, azul y gris. No importa si el nombre está en mayúsculas o en
-//minúsculas. Este método se invocará al crear el objeto y no será visible.
 
-    public String comprobarColor(String color) {
-        if (color.equalsIgnoreCase("blanco") || color.equalsIgnoreCase("negro") || color.equalsIgnoreCase("rojo") || color.equalsIgnoreCase("azul") || color.equalsIgnoreCase("gris")) {
-            return color.toLowerCase();
-        } else {
-            return "blanco";
-        }
-    }
-//• Metodo crearElectrodomestico(): le pide la información al usuario y llena el
-//electrodoméstico, también llama los métodos para comprobar el color y el consumo. Al
-//precio se le da un valor base de $1000.
-//• Método precioFinal(): según el consumo energético y su tamaño, aumentará el valor del
-//precio. Esta es la lista de precios:
 }
