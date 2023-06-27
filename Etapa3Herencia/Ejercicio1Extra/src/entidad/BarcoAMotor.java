@@ -21,28 +21,4 @@ public class BarcoAMotor extends Barco {
         this.potenciaMotor = potenciaMotor;
     }
 
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public double getEslora() {
-        return eslora;
-    }
-
-    public void setEslora(double eslora) {
-        this.eslora = eslora;
-    }
-
-    public int getAnio() {
-        return anio;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
-
 }

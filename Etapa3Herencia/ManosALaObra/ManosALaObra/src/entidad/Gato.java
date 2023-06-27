@@ -10,7 +10,7 @@
 //método hacerRuido() de cada ítem.
 package entidad;
 
-public class Gato extends Animal implements AnimalInterface {
+public class Gato extends Animal {
 
     @Override
     public void hacerRuido() {

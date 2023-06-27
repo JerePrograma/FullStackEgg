@@ -78,7 +78,6 @@ public class AlquilerService implements AlquierInter {
             System.out.println("El barco está mal instanciado :|");
             costoAlquiler = 0;
         }
-
         return costoAlquiler;
     }
 

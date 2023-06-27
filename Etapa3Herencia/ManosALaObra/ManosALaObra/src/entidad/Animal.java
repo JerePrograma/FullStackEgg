@@ -10,10 +10,16 @@
 //método hacerRuido() de cada ítem.
 package entidad;
 
-public class Animal {
+import interfaces.IAnimalInterface;
+
+public class Animal implements IAnimalInterface {
 
     public void hacerRuido() {
         System.out.println("Hola");
     }
 
+    @Override
+    public Animal crearAnimal() {
+        return new Animal();
+    }
 }

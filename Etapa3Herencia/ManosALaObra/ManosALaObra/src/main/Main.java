@@ -23,6 +23,9 @@ public class Main {
         Animal a = new Animal();
         Animal b = new Perro();
         Animal c = new Gato();
+        animales.add(a);
+        animales.add(b);
+        animales.add(c);
         for (Animal animal : animales) {
             animal.hacerRuido();
         }
