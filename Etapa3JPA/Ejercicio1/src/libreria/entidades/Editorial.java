@@ -39,4 +39,9 @@ public class Editorial implements Serializable {
         this.alta = alta;
     }
 
+    @Override
+    public String toString() {
+        return "Editorial{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+    }
+
 }
