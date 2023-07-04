@@ -13,14 +13,13 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ejercicio1PU");
+
         AutorServicio as = new AutorServicio();
         EditorialServicio es = new EditorialServicio();
         LibroServicio ls = new LibroServicio();
         boolean menu = true;
         do {
             System.out.println("\n\n");
-            EntityManager em = emf.createEntityManager();
             System.out.println("1. Agregar autor, editorial, o libro.");
             System.out.println("2. Dar de alta/baja o editar autor, editorial, o libro.");
             System.out.println("3. Buscar Autor por nombre");
@@ -40,13 +39,13 @@ public class Main {
                     opcion = leer.nextInt();
                     switch (opcion) {
                         case 1:
-                            as.guardarAutor(em);
+                            as.guardarAutor();
                             break;
                         case 2:
-                            es.persistirEditorial(em);
+                            es.guardarEditorial();
                             break;
                         case 3:
-                            ls.persistirLibro(em);
+                            ls.guardarLibro();
                             break;
                         default:
                             System.out.println("Opción no reconocida.");
@@ -60,32 +59,32 @@ public class Main {
 
                     switch (opcion) {
                         case 1:
-                            as.darBajaAutor(em);
+                            as.darBajaAutor();
                             break;
                         case 2:
-                            es.darBajaEditorial(em);
+                            es.darBajaEditorial();
                             break;
                         case 3:
-                            ls.darBajaLibro(em);
+                            ls.darBajaLibro();
                             break;
                         default:
                             System.out.println("Opción no reconocida.");
                     }
                     break;
                 case 3:
-                    as.buscarAutorNombre(em);
+                    as.buscarAutorNombre();
                     break;
                 case 4:
-                    ls.buscarLibroIsbn(em);
+                    ls.buscarLibroIsbn();
                     break;
                 case 5:
-                    ls.buscarLibroTitulo(em);
+                    ls.buscarLibroTitulo();
                     break;
                 case 6:
-                    ls.buscarLibroAutor(em);
+                    ls.buscarLibroAutor();
                     break;
                 case 7:
-                    ls.buscarLibroEditorial(em);
+                    ls.buscarLibroEditorial();
                     break;
                 case 8:
                     menu = false;

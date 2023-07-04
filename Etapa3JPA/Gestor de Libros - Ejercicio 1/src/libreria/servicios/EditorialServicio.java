@@ -2,12 +2,14 @@ package libreria.servicios;
 
 import java.util.List;
 import java.util.Scanner;
-import javax.persistence.EntityManager;
 import libreria.entidades.Editorial;
+import persistencia.EditorialDAO;
 
 public class EditorialServicio {
 
-    public void persistirEditorial(EntityManager em) {
+    private EditorialDAO dao = new EditorialDAO();
+
+    public void guardarEditorial() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         boolean bucle2;
         do {
@@ -17,18 +19,7 @@ public class EditorialServicio {
             String nombre = leer.next();
             editorial.setNombre(nombre);
             editorial.setAlta(true);
-            try {
-                em.getTransaction().begin();
-                em.persist(editorial);
-                em.getTransaction().commit();
-            } catch (Exception e) {
-                System.out.println("No se pudo cargar la editorial");
-                if (em.getTransaction().isActive()) {
-                    em.getTransaction().rollback();
-                }
-            } finally {
-                em.close();
-            }
+            dao.persisitrEditorial(editorial);
             System.out.println("¿Desea cargar otra editorial? S/N");
             if (leer.next().equalsIgnoreCase("S")) {
                 bucle2 = true;
@@ -36,7 +27,7 @@ public class EditorialServicio {
         } while (bucle2);
     }
 
-    public void darBajaEditorial(EntityManager em) {
+    public void darBajaEditorial() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Ingrese el nombre de la editorial");
         String nombreEditorial = leer.next();
@@ -44,7 +35,7 @@ public class EditorialServicio {
         boolean alta = true;
         boolean bucle;
 
-        List<Editorial> editoriales = em.createQuery("SELECT e FROM Editorial e").getResultList();
+        List<Editorial> editoriales = dao.consultarEditorial();
         for (Editorial editorial : editoriales) {
             if (editorial.getNombre().equalsIgnoreCase(nombreEditorial)) {
                 do {
@@ -67,19 +58,8 @@ public class EditorialServicio {
                 } while (bucle);
                 editorial.setAlta(alta);
                 noEncontrado = false;
-                try {
-                    em.getTransaction().begin();
-                    em.persist(editorial);
-                    em.getTransaction().commit();
-                    break;
-                } catch (Exception e) {
-                    System.out.println("No se pudo actualizar el estado");
-                    if (em.getTransaction().isActive()) {
-                        em.getTransaction().rollback();
-                    }
-                } finally {
-                    em.close();
-                }
+                dao.actualizarEstadoEditorial(editorial);
+                break;
             }
         }
         if (noEncontrado) {
