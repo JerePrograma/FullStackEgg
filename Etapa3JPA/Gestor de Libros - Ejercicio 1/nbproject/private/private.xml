@@ -5,17 +5,24 @@
             <url>src/libreria/servicios/LibroServicio.java</url>
             <bookmark id="1">
                 <name/>
-                <line>238</line>
+                <line>13</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Ejercicio1/src/libreria/servicios/LibroServicio.java</file>
-            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Ejercicio1/src/libreria/servicios/EditorialServicio.java</file>
-            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Ejercicio1/src/libreria/Main.java</file>
-            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Ejercicio1/src/libreria/servicios/AutorServicio.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/servicios/LibroServicio.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/entidades/Editorial.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/persistencia/LibroDao.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/persistencia/DAO.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/persistencia/PrestamoDao.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/entidades/Libro.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/entidades/Autor.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/entidades/Prestamo.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/entidades/Cliente.java</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/META-INF/persistence.xml</file>
+            <file>file:/D:/Disco%20D/Programacion/2023/Programación/ArgPrograma/FullStackEgg/FullStackEgg/Etapa3JPA/Gestor%20de%20Libros%20-%20Ejercicio%201/src/libreria/servicios/PrestamoServicio.java</file>
         </group>
     </open-files>
 </project-private>

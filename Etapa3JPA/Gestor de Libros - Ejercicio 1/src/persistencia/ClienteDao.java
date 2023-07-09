@@ -1,0 +1,26 @@
+package persistencia;
+
+import java.util.List;
+import libreria.entidades.Cliente;
+
+public class ClienteDao extends DAO {
+
+
+    public void persistirCliente(Cliente cliente) {
+
+        persisitrEntidad(cliente);
+    }
+
+    public void actualizarEstadoAutor(Cliente cliente) {
+
+        actualizarEstadoEntidad(cliente);
+
+    }
+
+    public List buscarAutor() {
+
+        return em.createQuery("SELECT c FROM Cliente c").getResultList();
+
+    }
+    
+}

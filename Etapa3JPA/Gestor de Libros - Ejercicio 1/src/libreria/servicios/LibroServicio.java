@@ -195,19 +195,19 @@ public class LibroServicio {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Ingrese el ISBN del libro");
         long isbn = leer.nextLong();
-        List<Libro> libros = dao.consultaLibros();
-        for (Libro libro : libros) {
-            if (libro.getIsbn() == isbn) {
-                System.out.println("Libro encontrado");
-                System.out.println(libro);
-                return libro;
-            }
+        Libro libro = (Libro) dao.buscarPorIsbn(isbn);
+        if (libro != null) {
+            System.out.println("Libro encontrado");
+            System.out.println(libro);
+            noEncontrado = false;
         }
+
         if (noEncontrado) {
             System.out.println("Libro no encontrado");
             leer.next();
         }
-        return null;
+
+        return libro;
     }
 
     public Libro buscarLibroTitulo() {
@@ -225,7 +225,6 @@ public class LibroServicio {
         }
         if (noEncontrado) {
             System.out.println("Libro no encontrado");
-            leer.next();
         }
         return null;
     }

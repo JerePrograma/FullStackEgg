@@ -26,4 +26,8 @@ public class LibroDao extends DAO {
         return em.createQuery(jpql).getResultList();
     }
 
+    public Libro buscarPorIsbn(long id) {
+        return em.find(Libro.class, id);
+    }
+
 }
