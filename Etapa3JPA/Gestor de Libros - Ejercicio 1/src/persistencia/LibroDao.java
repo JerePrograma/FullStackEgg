@@ -15,7 +15,7 @@ public class LibroDao extends DAO {
     }
 
     public List consultaGenerica(String entidad, String atributo, String variable) {
-        String jpql = "SELECT e FROM " + entidad + " e WHERE e." + atributo + " LIKE :variable";
+        String jpql = "SELECT e FROM Libro e WHERE e." + atributo + " LIKE :variable";
         Query query = em.createQuery(jpql);
         query.setParameter("variable", "%" + variable + "%");
         return query.getResultList();

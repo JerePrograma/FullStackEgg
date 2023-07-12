@@ -19,7 +19,17 @@ public class AutorServicio {
             String nombre = leer.next();
             autor.setNombre(nombre);
             autor.setAlta(true);
+
+            // Busca si ya existe un autor con el mismo nombre
+            List<Autor> autores = dao.buscarAutoresPorNombre(nombre);
+            if (!autores.isEmpty()) {
+                System.out.println("Ya existe un autor con ese nombre. Intente nuevamente.");
+                continue;
+            }
+
             dao.persistirAutor(autor);
+            System.out.println("Autor guardado exitosamente.");
+
             System.out.println("¿Desea cargar otro autor? S/N");
             if (leer.next().equalsIgnoreCase("S")) {
                 bucle = true;
@@ -29,8 +39,6 @@ public class AutorServicio {
 
     public void darBajaAutor() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Ingrese el nombre del autor");
-        String nombreEditorial = leer.next();
         boolean noEncontrado = true;
         boolean alta = true;
         boolean bucle;
@@ -67,7 +75,6 @@ public class AutorServicio {
     }
 
     public Autor buscarAutorNombre() {
-        boolean noEncontrado = true;
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Ingrese el nombre del autor");
         String nombreAutor = leer.next();
@@ -79,9 +86,7 @@ public class AutorServicio {
                 return autor;
             }
         }
-        if (noEncontrado) {
-            System.out.println("Autor no encontrado");
-        }
+        System.out.println("Autor no encontrado");
         return null;
     }
 }

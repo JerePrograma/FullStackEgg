@@ -22,8 +22,7 @@ public class Main {
             System.out.println("\n\n");
             System.out.println("1. Agregar autor, editorial, o libro.");
             System.out.println("2. Dar de alta/baja o editar autor, editorial, o libro.");
-            System.out.println("3. Buscar Aut"
-                    + "or por nombre");
+            System.out.println("3. Buscar Autor por nombre");
             System.out.println("4. Buscar libro por ISBN");
             System.out.println("5. Buscar libro por Título");
             System.out.println("6. Buscar libro/s por nombre de Autor");
@@ -83,10 +82,14 @@ public class Main {
                     ls.buscarLibroTitulo();
                     break;
                 case 6:
-                    ls.buscarLibroAutor();
+                    System.out.println("Ingrese el nombre del autor:");
+                    String nombreAutor = leer.next();
+                    ls.buscarLibroAutor(nombreAutor);
                     break;
                 case 7:
-                    ls.buscarLibroEditorial();
+                    System.out.println("Ingrese el nombre de la editorial:");
+                    String nombreEditorial = leer.next();
+                    ls.buscarLibroEditorial(nombreEditorial);
                     break;
                 case 8:
                     ps.prestamoLibro();

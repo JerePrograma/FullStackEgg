@@ -11,6 +11,8 @@ public class LibroServicio {
 
     private LibroDao dao = new LibroDao();
 
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
+
     public void guardarLibro() {
 
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
@@ -109,7 +111,7 @@ public class LibroServicio {
     }
 
     public void prestarLibro(Libro libro) {
-        if (libro.getEjemplaresPrestados() < libro.getEjemplares()) {
+        if (libro.getEjemplaresPrestados() < libro.getEjemplaresRestantes()) {
             libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() + 1);
             libro.setEjemplaresRestantes(libro.getEjemplaresRestantes() - 1);
             dao.actualizarLibro(libro);
@@ -124,8 +126,16 @@ public class LibroServicio {
             libro.setEjemplaresRestantes(libro.getEjemplaresRestantes() + 1);
             dao.actualizarLibro(libro);
         } else {
-            System.out.println("No hAy ningún libro que devolver");
+            System.out.println("No hay ningún libro que devolver");
         }
+    }
+
+    public List<Libro> buscarLibroAutor(String autor) {
+        return dao.consultaGenerica("Libro", "autor", autor);
+    }
+
+    public List<Libro> buscarLibroEditorial(String editorial) {
+        return dao.consultaGenerica("Libro", "editorial", editorial);
     }
 
     public void darBajaLibro() {
@@ -147,10 +157,36 @@ public class LibroServicio {
                     libro = buscarLibroTitulo();
                     break;
                 case 3:
-                    libro = buscarLibroAutor();
+                    System.out.println("Ingrese el nombre del autor:");
+                    String autor = leer.next();
+                    List<Libro> librosAutor = buscarLibroAutor(autor);
+                    if (librosAutor.isEmpty()) {
+                        System.out.println("No se encontraron libros de " + autor);
+                    } else {
+                        System.out.println("Libros de " + autor + ":");
+                        for (int i = 0; i < librosAutor.size(); i++) {
+                            System.out.println((i + 1) + ". " + librosAutor.get(i));
+                        }
+                        System.out.println("Seleccione un libro (1-" + librosAutor.size() + "):");
+                        int indiceAutor = leer.nextInt() - 1;
+                        libro = librosAutor.get(indiceAutor);
+                    }
                     break;
                 case 4:
-                    libro = buscarLibroEditorial();
+                    System.out.println("Ingrese el nombre de la editorial:");
+                    String editorial = leer.next();
+                    List<Libro> librosEditorial = buscarLibroEditorial(editorial);
+                    if (librosEditorial.isEmpty()) {
+                        System.out.println("No se encontraron libros de la editorial " + editorial);
+                    } else {
+                        System.out.println("Libros de la editorial " + editorial + ":");
+                        for (int i = 0; i < librosEditorial.size(); i++) {
+                            System.out.println((i + 1) + ". " + librosEditorial.get(i));
+                        }
+                        System.out.println("Seleccione un libro (1-" + librosEditorial.size() + "):");
+                        int indiceEditorial = leer.nextInt() - 1;
+                        libro = librosEditorial.get(indiceEditorial);
+                    }
                     break;
                 default:
                     System.out.println("Opción no reconocida");
@@ -176,9 +212,9 @@ public class LibroServicio {
                         break;
                     default:
                         System.out.println("Opción no reconocida");
-                        bucle = true;
+                        bucle2 = true;
                 }
-            } while (bucle);
+            } while (bucle2);
             libro.setAlta(alta);
             noEncontrado = false;
             dao.actualizarLibro(libro);
@@ -229,47 +265,17 @@ public class LibroServicio {
         return null;
     }
 
-    public Libro buscarLibroAutor() {
-        boolean noEncontrado = true;
-        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+    public void buscarLibroAutor() {
         System.out.println("Ingrese el nombre del autor");
         String nombreAutor = leer.next();
-        List<Libro> libros = dao.consultaGenerica("Libro", "autor.nombre", nombreAutor);
-        Libro libro2 = null;
-        if (!libros.isEmpty()) {
-            System.out.println("Libros encontrados");
-            for (Libro libro : libros) {
+        List<Libro> librosCoincidentes = dao.consultaGenerica("Libro", "autor", nombreAutor);
+        if (librosCoincidentes.isEmpty()) {
+            System.out.println("No se encontraron libros de " + nombreAutor);
+        } else {
+            System.out.println("Libros de " + nombreAutor + ":");
+            for (Libro libro : librosCoincidentes) {
                 System.out.println(libro);
-                libro2 = libro;
             }
-            noEncontrado = false;
         }
-        if (noEncontrado) {
-            System.out.println("Libro no encontrado");
-        }
-        return libro2;
     }
-
-    public Libro buscarLibroEditorial() {
-        boolean noEncontrado = true;
-        Scanner leer = new Scanner(System.in).useDelimiter("\n");
-
-        System.out.println("Ingrese el nombre de la editorial");
-        String nombreEditorial = leer.next();
-        List<Libro> libros = dao.consultaGenerica("Libro", "editorial.nombre", nombreEditorial);
-        Libro libro2 = null;
-        if (!libros.isEmpty()) {
-            System.out.println("Libros encontrados");
-            for (Libro libro : libros) {
-                System.out.println(libro);
-                libro2 = libro;
-            }
-            noEncontrado = false;
-        }
-        if (noEncontrado) {
-            System.out.println("Libro no encontrado");
-        }
-        return libro2;
-    }
-
 }

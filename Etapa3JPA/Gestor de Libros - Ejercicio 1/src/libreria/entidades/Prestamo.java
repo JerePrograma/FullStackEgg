@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -16,22 +17,16 @@ public class Prestamo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Temporal(TemporalType.DATE)
-    private Date fechaPrestamo;
-    @Temporal(TemporalType.DATE)
-    private Date fechaDevolucion;
-    @OneToOne
-    private Libro Libro;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "libro_isbn")
+    private Libro libro;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
-    public Prestamo(Integer id, Date fechaPrestamo, Date fechaDevolucion, Libro Libro, Cliente cliente) {
-        this.id = id;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucion = fechaDevolucion;
-        this.Libro = Libro;
-        this.cliente = cliente;
-    }
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicio;
+    @Temporal(TemporalType.DATE)
+    private Date fechaFin;
 
     public Prestamo() {
     }
@@ -44,28 +39,12 @@ public class Prestamo implements Serializable {
         this.id = id;
     }
 
-    public Date getFechaPrestamo() {
-        return fechaPrestamo;
-    }
-
-    public void setFechaPrestamo(Date fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public Date getFechaDevolucion() {
-        return fechaDevolucion;
-    }
-
-    public void setFechaDevolucion(Date fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
-    }
-
     public Libro getLibro() {
-        return Libro;
+        return libro;
     }
 
-    public void setLibro(Libro Libro) {
-        this.Libro = Libro;
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 
     public Cliente getCliente() {
@@ -74,6 +53,22 @@ public class Prestamo implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
 }

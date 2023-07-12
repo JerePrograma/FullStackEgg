@@ -15,8 +15,10 @@ public class Libro implements Serializable {
     private Integer ejemplaresRestantes;
     private Boolean alta;
     @ManyToOne
+    @JoinColumn(name = "autor_id")
     private Autor autor;
     @ManyToOne
+    @JoinColumn(name = "editorial_id")
     private Editorial editorial;
 
     public Libro() {

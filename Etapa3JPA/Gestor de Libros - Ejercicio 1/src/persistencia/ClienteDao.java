@@ -11,13 +11,13 @@ public class ClienteDao extends DAO {
         persisitrEntidad(cliente);
     }
 
-    public void actualizarEstadoAutor(Cliente cliente) {
+    public void actualizarEstadoCleinte(Cliente cliente) {
 
         actualizarEstadoEntidad(cliente);
 
     }
 
-    public List buscarAutor() {
+    public List buscarCliente() {
 
         return em.createQuery("SELECT c FROM Cliente c").getResultList();
 

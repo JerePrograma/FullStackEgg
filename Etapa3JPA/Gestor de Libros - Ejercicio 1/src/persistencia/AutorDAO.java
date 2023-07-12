@@ -6,7 +6,6 @@ import libreria.entidades.Autor;
 public class AutorDAO extends DAO {
 
     public void persistirAutor(Autor autor) {
-
         persisitrEntidad(autor);
     }
 
@@ -20,5 +19,12 @@ public class AutorDAO extends DAO {
 
         return em.createQuery("SELECT a FROM Autor a").getResultList();
 
+    }
+
+    public List<Autor> buscarAutoresPorNombre(String nombre) {
+        String jpql = "SELECT a FROM Autor a WHERE a.nombre = :nombre";
+        return em.createQuery(jpql, Autor.class)
+                .setParameter("nombre", nombre)
+                .getResultList();
     }
 }

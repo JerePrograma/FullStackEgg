@@ -6,11 +6,15 @@ import javax.persistence.Persistence;
 
 public class DAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Ejercicio1PU");
-    EntityManager em = emf.createEntityManager();
+    protected final EntityManagerFactory emf;
+    protected final EntityManager em;
+
+    public DAO() {
+        emf = Persistence.createEntityManagerFactory("Ejercicio1PU");
+        em = emf.createEntityManager();
+    }
 
     public void persisitrEntidad(Object object) {
-
         try {
             em.getTransaction().begin();
             em.persist(object);
@@ -20,10 +24,7 @@ public class DAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-        } finally {
-            em.close();
         }
-
     }
 
     public void actualizarEstadoEntidad(Object object) {
@@ -37,8 +38,6 @@ public class DAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-        } finally {
-            em.close();
         }
     }
 }
