@@ -10,19 +10,18 @@ import persistencia.LibroDao;
 public class LibroServicio {
 
     private LibroDao dao = new LibroDao();
-
+    private AutorServicio as = new AutorServicio();
+    private EditorialServicio es = new EditorialServicio();
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
     public void guardarLibro() {
-
-        Scanner leer = new Scanner(System.in).useDelimiter("\n");
         boolean bucle2;
         do {
             bucle2 = false;
             System.out.println("Ingrese el título del libro");
             String nombre = leer.next();
-            Libro libro = buscarLibroTitulo();
-            if (libro == null) {
+            Libro libro = buscarLibroTitulo(nombre);
+            if (libro.getTitulo() == null) {
                 libro.setTitulo(nombre);
                 do {
                     try {
@@ -42,7 +41,7 @@ public class LibroServicio {
                     try {
                         System.out.println("Ingrese el año de la edición del libro");
                         int anio = leer.nextInt();
-                        if (anio > 1500 && anio < 2023) {
+                        if (anio <= 2023) {
                             libro.setAnio(anio);
                             break;
                         } else {
@@ -71,30 +70,57 @@ public class LibroServicio {
                 do {
                     System.out.println("Ingrese el nombre del autor");
                     String nombreAutor = leer.next();
-                    List<Autor> autores = dao.consultaGenerica("autor", "nombre", nombreAutor);
-                    for (Autor autor : autores) {
-                        if (autor.getNombre().equalsIgnoreCase(nombreAutor)) {
-                            libro.setAutor(autor);
-                            noEncontrado = false;
+                    try {
+                        List<Autor> autores = dao.consultaGenerica("Autor", "nombre", nombreAutor);
+                        for (Autor autor : autores) {
+                            if (autor.getNombre().equalsIgnoreCase(nombreAutor)) {
+                                libro.setAutor(autor);
+                                noEncontrado = false;
+                            }
                         }
+                    } catch (Exception e) {
+
                     }
                     if (noEncontrado) {
                         System.out.println("Autor no encontrado");
+                        System.out.println("¿Desea registrarlo? S/N");
+                        String respuesta = leer.next();
+                        if (respuesta.equalsIgnoreCase("S")) {
+                            Autor autor = new Autor();
+                            autor.setNombre(nombreAutor);
+                            autor.setAlta(true);
+                            as.guardarAutor(autor);
+                            libro.setAutor(autor);
+                            noEncontrado = false;
+                        }
                     }
                 } while (noEncontrado);
                 noEncontrado = true;
                 do {
                     System.out.println("Ingrese el nombre de la editorial");
                     String nombreEditorial = leer.next();
-                    List<Editorial> editoriales = dao.consultaGenerica("editorial", "nombre", nombreEditorial);
-                    for (Editorial editorial : editoriales) {
-                        if (editorial.getNombre().equalsIgnoreCase(nombreEditorial)) {
-                            libro.setEditorial(editorial);
-                            noEncontrado = false;
+                    try {
+                        List<Editorial> editoriales = dao.consultaGenerica("Editorial", "nombre", nombreEditorial);
+                        for (Editorial editorial : editoriales) {
+                            if (editorial.getNombre().equalsIgnoreCase(nombreEditorial)) {
+                                libro.setEditorial(editorial);
+                                noEncontrado = false;
+                            }
                         }
+                    } catch (Exception e) {
                     }
                     if (noEncontrado) {
                         System.out.println("Editorial no encontrada");
+                        System.out.println("¿Desea registrarla? S/N");
+                        String respuesta = leer.next();
+                        if (respuesta.equalsIgnoreCase("S")) {
+                            Editorial editorial = new Editorial();
+                            editorial.setNombre(nombreEditorial);
+                            editorial.setAlta(true);
+                            es.guardarEditorial(editorial);
+                            libro.setEditorial(editorial);
+                            noEncontrado = false;
+                        }
                     }
 
                 } while (noEncontrado);
@@ -128,14 +154,6 @@ public class LibroServicio {
         } else {
             System.out.println("No hay ningún libro que devolver");
         }
-    }
-
-    public List<Libro> buscarLibroAutor(String autor) {
-        return dao.consultaGenerica("Libro", "autor", autor);
-    }
-
-    public List<Libro> buscarLibroEditorial(String editorial) {
-        return dao.consultaGenerica("Libro", "editorial", editorial);
     }
 
     public void darBajaLibro() {
@@ -246,6 +264,21 @@ public class LibroServicio {
         return libro;
     }
 
+    public Libro buscarLibroTitulo(String tituloLibro) {
+        boolean noEncontrado = true;
+        List<Libro> libros = dao.consultaGenerica("Libro", "titulo", tituloLibro);
+        if (!libros.isEmpty()) {
+            for (Libro libro : libros) {
+                if (libro.getTitulo().equalsIgnoreCase(tituloLibro)) {
+                    System.out.println("Libro ya registrado");
+                    System.out.println(libro);
+                    return libro;
+                }
+            }
+        }
+        return new Libro();
+    }
+
     public Libro buscarLibroTitulo() {
         boolean noEncontrado = true;
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
@@ -268,14 +301,36 @@ public class LibroServicio {
     public void buscarLibroAutor() {
         System.out.println("Ingrese el nombre del autor");
         String nombreAutor = leer.next();
-        List<Libro> librosCoincidentes = dao.consultaGenerica("Libro", "autor", nombreAutor);
+        List<Libro> librosCoincidentes = dao.consultaGenerica("Libro", "autor.nombre", nombreAutor);
         if (librosCoincidentes.isEmpty()) {
-            System.out.println("No se encontraron libros de " + nombreAutor);
+            System.out.println("No se encontraron libros del autor " + nombreAutor);
         } else {
             System.out.println("Libros de " + nombreAutor + ":");
             for (Libro libro : librosCoincidentes) {
                 System.out.println(libro);
             }
         }
+    }
+
+    public void buscarLibroEditorial() {
+        System.out.println("Ingrese el nombre de la editorial");
+        String nombreEditorial = leer.next();
+        List<Libro> librosCoincidentes = dao.consultaGenerica("Libro", "editorial.nombre", nombreEditorial);
+        if (librosCoincidentes.isEmpty()) {
+            System.out.println("No se encontraron libros de la editorial " + nombreEditorial);
+        } else {
+            System.out.println("Libros de " + nombreEditorial + ":");
+            for (Libro libro : librosCoincidentes) {
+                System.out.println(libro);
+            }
+        }
+    }
+
+    public List<Libro> buscarLibroAutor(String autor) {
+        return dao.consultaGenerica("Libro", "autor.nombre", autor);
+    }
+
+    public List<Libro> buscarLibroEditorial(String editorial) {
+        return dao.consultaGenerica("Libro", "editorial.nombre", editorial);
     }
 }

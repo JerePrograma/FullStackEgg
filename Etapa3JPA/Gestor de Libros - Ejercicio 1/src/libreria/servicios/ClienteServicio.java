@@ -15,11 +15,17 @@ public class ClienteServicio {
             try {
                 System.out.println("Ingrese el documento del cliente");
                 int documento = leer.nextInt();
+                Cliente cliente2 = cd.buscarCliente(documento);
+                if(cliente2 != null){
+                    System.out.println("Cliente ya registrado.");
+                    return cliente2;
+                }
                 cliente.setId(documento);
                 cliente.setDocumento(documento);
                 break;
             } catch (Exception e) {
                 System.out.println("Documento mal ingresado");
+                leer.next();
             }
         } while (true);
         System.out.println("Ingrese el nombre del cliente");

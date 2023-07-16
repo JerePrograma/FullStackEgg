@@ -26,9 +26,9 @@ public class PrestamoServicio {
                     libro = ls.buscarLibroTitulo();
                     if (libro.getEjemplaresRestantes() < 1) {
                         System.out.println("No quedan más ejemplares para prestar de este libro");
-                    } else {
-                        bucleLibro = false;
+                        return;
                     }
+                    break;
                 } catch (NullPointerException e) {
                     System.out.println("El libro no existe.");
                 }
@@ -39,7 +39,7 @@ public class PrestamoServicio {
             int opcion;
             Cliente cliente = null;
             do {
-                System.out.println("Es un cliente ya registrado?");
+                System.out.println("¿Es un cliente ya registrado?");
                 System.out.println("1- Si");
                 System.out.println("2- No");
                 try {
@@ -75,19 +75,15 @@ public class PrestamoServicio {
             }
 
             prestamo.setCliente(cliente);
-            String fecha;
+
             Date fechaActual = new Date();
+            Date fechaPrestamo;
             do {
                 try {
                     System.out.println("Ingrese la fecha de prestamo (dd/mm/aaaa)");
-                    fecha = leer.next();
-                    Date fechaPrestamo = new Date(Integer.parseInt(fecha.substring(6, 10)) - 1900, Integer.parseInt(fecha.substring(3, 5)) - 1, Integer.parseInt(fecha.substring(0, 2)));
-                    if (fechaPrestamo.before(fechaActual)) {
-                        System.out.println("La fecha de préstamo no puede ser anterior a la fecha actual.");
-                    } else {
-                        prestamo.setFechaInicio(fechaPrestamo);
-                        break;
-                    }
+                    String fecha = leer.next();
+                    fechaPrestamo = new Date(Integer.parseInt(fecha.substring(6, 10)) - 1900, Integer.parseInt(fecha.substring(3, 5)) - 1, Integer.parseInt(fecha.substring(0, 2)));
+                    break;
                 } catch (Exception e) {
                     System.out.println("Formato de fecha incorrecto.");
                 }
@@ -96,39 +92,28 @@ public class PrestamoServicio {
             do {
                 try {
                     System.out.println("Ingrese la fecha de devolucion (dd/mm/aaaa)");
-                    fecha = leer.next();
+                    String fecha = leer.next();
                     Date fechaDevolucion = new Date(Integer.parseInt(fecha.substring(6, 10)) - 1900, Integer.parseInt(fecha.substring(3, 5)) - 1, Integer.parseInt(fecha.substring(0, 2)));
-                    if (fechaDevolucion.before(prestamo.getFechaInicio())) {
+                    if (fechaDevolucion.before(fechaPrestamo)) {
                         System.out.println("La fecha de devolución no puede ser anterior a la fecha de préstamo.");
                     } else {
                         prestamo.setFechaFin(fechaDevolucion);
                         break;
                     }
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     System.out.println("Formato de fecha incorrecto.");
                 }
             } while (true);
-
-            synchronized (this) {
-                if (libro.getEjemplaresRestantes() < 1) {
-                    System.out.println("No quedan ejemplares restantes para prestar.");
-                    return;
-                }
-                ls.prestarLibro(libro);
-            }
-
+            ls.prestarLibro(libro);
             try {
                 dao.persistirPrestamo(prestamo);
+                System.out.println("Préstamo registrado exitosamente!");
             } catch (Exception e) {
-                // Manejar la excepción de persistencia
                 System.out.println("No se pudo guardar el préstamo en la base de datos.");
-                synchronized (this) {
-                    ls.devolverLibro(libro);
-                }
             }
         } catch (Exception e) {
-            // Manejar cualquier otra excepción que no haya sido contemplada
             System.out.println("Ocurrió un error al realizar el préstamo.");
+            e.printStackTrace();
         }
     }
 

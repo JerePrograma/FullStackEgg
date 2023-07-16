@@ -19,7 +19,7 @@ public class Main {
         PrestamoServicio ps = new PrestamoServicio();
         boolean menu = true;
         do {
-            System.out.println("\n\n");
+            System.out.println("\n");
             System.out.println("1. Agregar autor, editorial, o libro.");
             System.out.println("2. Dar de alta/baja o editar autor, editorial, o libro.");
             System.out.println("3. Buscar Autor por nombre");
@@ -82,17 +82,14 @@ public class Main {
                     ls.buscarLibroTitulo();
                     break;
                 case 6:
-                    System.out.println("Ingrese el nombre del autor:");
-                    String nombreAutor = leer.next();
-                    ls.buscarLibroAutor(nombreAutor);
+                    ls.buscarLibroAutor();
                     break;
                 case 7:
-                    System.out.println("Ingrese el nombre de la editorial:");
-                    String nombreEditorial = leer.next();
-                    ls.buscarLibroEditorial(nombreEditorial);
+                    ls.buscarLibroEditorial();
                     break;
                 case 8:
                     ps.prestamoLibro();
+                    break;
                 case 9:
                     menu = false;
                     System.out.println("Gracias por usar mi programa!");

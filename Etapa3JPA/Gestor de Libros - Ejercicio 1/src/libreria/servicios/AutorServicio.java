@@ -37,6 +37,13 @@ public class AutorServicio {
         } while (bucle);
     }
 
+    public void guardarAutor(Autor autor) {
+
+        dao.persistirAutor(autor);
+        System.out.println("Autor guardado exitosamente.");
+
+    }
+
     public void darBajaAutor() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         boolean noEncontrado = true;

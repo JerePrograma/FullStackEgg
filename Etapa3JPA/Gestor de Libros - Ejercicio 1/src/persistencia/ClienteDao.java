@@ -5,7 +5,6 @@ import libreria.entidades.Cliente;
 
 public class ClienteDao extends DAO {
 
-
     public void persistirCliente(Cliente cliente) {
 
         persisitrEntidad(cliente);
@@ -22,5 +21,11 @@ public class ClienteDao extends DAO {
         return em.createQuery("SELECT c FROM Cliente c").getResultList();
 
     }
-    
+
+    public Cliente buscarCliente(int documento) {
+
+        return em.find(Cliente.class, documento);
+
+    }
+
 }
