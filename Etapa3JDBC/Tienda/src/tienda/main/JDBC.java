@@ -21,8 +21,8 @@ public class JDBC {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
         while (true) {
-            System.out.println("\n1. Listar todos los productos");
-            System.out.println("2. Listar nombres de todos los productos");
+            System.out.println("1. Listar todos los productos");
+            System.out.println("2. Listar por parámetro todos los productos");
             System.out.println("3. Listar nombres y precios de todos los productos");
             System.out.println("4. Listar productos con precios entre 120 y 202");
             System.out.println("5. Listar todos los portátiles");
@@ -40,7 +40,30 @@ public class JDBC {
                     productoServicio.selectAll();
                     break;
                 case 2:
-                    productoServicio.selectPorParametro("nombre");
+                    System.out.println("Selecciona el parámetro que desea consultar del producto:");
+                    System.out.println("1- codigo");
+                    System.out.println("2- nombre");
+                    System.out.println("3- precio");
+                    System.out.println("4- codigo fabricante");
+                    int opcion = leer.nextInt();
+                    String parametro;
+                    switch (opcion) {
+                        case 1:
+                            parametro = "codigo";
+                            break;
+                        case 2:
+                            parametro = "nombre";
+                            break;
+                        case 3:
+                            parametro = "precio";
+                            break;
+                        case 4:
+                            parametro = "codigo_fabricante";
+                            break;
+                        default:
+                            parametro = "*";
+                    }
+                    productoServicio.selectPorParametro(parametro);
                     break;
                 case 3:
                     productoServicio.selectPorParametro("nombre", "precio");
@@ -65,16 +88,20 @@ public class JDBC {
                     productoServicio.agregarProducto(nuevoProducto);
                     break;
                 case 8:
-                    System.out.println("Ingrese el código del producto que desea modificar");
-                    int codigo = leer.nextInt();
-                    System.out.println("Ingrese el nombre del pruducto");
-                    String nombre2 = leer.next();
-                    System.out.println("Ingrese el precio del producto");
-                    Double precio2 = leer.nextDouble();
-                    System.out.println("Ingrese el código del fabricante");
-                    int fabricante2 = leer.nextInt();
-                    Producto productoAEditar = new Producto(codigo, nombre2, precio2, fabricante2);
-                    productoServicio.editarProducto(productoAEditar);
+                    try {
+                        System.out.println("Ingrese el código del producto que desea modificar");
+                        int codigo = leer.nextInt();
+                        System.out.println("Ingrese el nombre del pruducto");
+                        String nombre2 = leer.next();
+                        System.out.println("Ingrese el precio del producto");
+                        Double precio2 = leer.nextDouble();
+                        System.out.println("Ingrese el código del fabricante");
+                        int fabricante2 = leer.nextInt();
+                        Producto productoAEditar = new Producto(codigo, nombre2, precio2, fabricante2);
+                        productoServicio.editarProducto(productoAEditar);
+                    } catch (Exception e) {
+                        System.out.println("No se pudo cargar uno de los datos");
+                    }
                     break;
                 case 9:
                     System.out.println("Ingrese el código del producto que desea eliminar");

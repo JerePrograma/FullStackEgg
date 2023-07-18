@@ -64,7 +64,7 @@ public abstract class DAO {
             sentencia = conexion.createStatement();
             resultado = sentencia.executeQuery(sql);
             //Select nombre from producto
-            
+
         } catch (Exception e) {
             throw e;
         }

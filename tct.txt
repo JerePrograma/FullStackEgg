@@ -1,0 +1,43 @@
+    public void mostrarProductosParametro(String parametro) throws Exception {
+        String sql = "SELECT " + parametro + " FROM producto";
+        consultarBase(sql);
+        int codigo;
+        String nombre;
+        double precio;
+        int codigoFabricante;
+        while (resultado.next()) {
+            switch (parametro) {
+                case "codigo":
+                     codigo = resultado.getInt("codigo");
+                    System.out.println(codigo);
+                    break;
+                case "nombre":
+                    nombre = resultado.getString("nombre");
+                    System.out.println(nombre);
+                    break;
+                case "precio":
+                    precio = resultado.getDouble("precio");
+                    System.out.println(precio);
+                    break;
+                case "codigo_fabricante":
+                    codigoFabricante = resultado.getInt("codigo_fabricante");
+                    System.out.println(codigoFabricante);
+                    break;
+                case "codigo, nombre":
+                    codigo = resultado.getInt("codigo");
+                    nombre = resultado.getString("nombre");
+                    System.out.println("Codigo: " + codigo + " nombre: " + nombre);
+                    break;
+                case "codigo, nombre, precio":
+                case "codigo, nombre, precio, codigo_fabricante":
+                case "nombre, precio":
+                case "nombre codigo_fabricante":
+                case "precio, codigo_fabricante":
+                case "codigo, precio":
+                case "codigo, codigo_fabricante":
+                default:
+                    System.out.println("No se reconoció el parámetro de consulta");
+
+            }
+        }
+    }

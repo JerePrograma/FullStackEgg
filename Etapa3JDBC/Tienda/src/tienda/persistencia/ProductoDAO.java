@@ -12,8 +12,12 @@ public class ProductoDAO extends DAO {
             consultarBase(sql);
             System.out.printf("%-20s\n", parametro.toUpperCase());
             System.out.println("------------------------------------");
-            while (resultado.next()) {
-                System.out.printf("%-20s\n", resultado.getString(parametro));
+            if (parametro.equalsIgnoreCase("*")) {
+                selectAll();
+            } else {
+                while (resultado.next()) {
+                    System.out.printf("%-20s\n", resultado.getString(parametro));
+                }
             }
         } catch (Exception e) {
             desconectarBase();

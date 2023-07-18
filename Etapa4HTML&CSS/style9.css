@@ -1,0 +1,77 @@
+#titulo {
+  color: rgb(51, 132, 125);
+}
+
+strong {
+  color: red;
+}
+
+.destacado {
+  color: orange;
+}
+
+#subtitulo {
+  color: blue;
+}
+
+a {
+  color: red;
+}
+em {
+  color: blue;
+}
+
+.especial {
+  color: purple;
+}
+
+table,
+td,
+tr,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 3px;
+}
+
+caption {
+  display: none;
+}
+
+thead {
+  color: orange;
+}
+
+tfoot {
+  color: red;
+}
+
+th.especial {
+  color: orange;
+}
+th {
+  color: red;
+}
+td {
+  color: green;
+}
+
+td > em {
+  color: green;
+}
+
+td > strong {
+  color: orange;
+}
+
+#adicional {
+  color: rgb(161, 146, 53);
+}
+
+span#especial {
+    color : fuchsia;
+}
+
+#adicional > p > a{
+    color: green;
+}

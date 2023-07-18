@@ -1,0 +1,51 @@
+<!-- Por último, vamos a crear un formulario para registrar un usuario que se vea de la
+siguiente manera:
+
+Es importante que en las casillas de sexo del usuario se puede clickear la/s palabra/s
+hombre, mujer o prefiero no decir para seleccionar la opción. Recordemos que eso lo
+podemos hacer con la etiqueta label-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 6</title>
+  </head>
+  <body>
+    <form action="">
+      <label>Nombre del usuario</label> <br />
+      <input type="text" name="nombre" /> <br />
+      <label>Contraseña del usuario</label> <br />
+      <input type="password" name="contraseña" /> <br />
+      <label>Edad del usuario</label> <br />
+      <input type="number" name="edad " /> <br />
+      <label>Fecha de nacimiento del usuario</label> <br />
+      <input type="date" name="fechanac" /> <br />
+      <label>Sexo del usuario</label> <br />
+      <label for="Hombre">
+        <input type="radio" id="Hombre" name="sexo" value="Hombre" /> Hombre
+        <br
+      /></label>
+      <label for="Mujer">
+        <input type="radio" id="Mujer" name="sexo" value="Mujer" /> Mujer <br />
+      </label>
+      <label for="Prefiero no decirlo">
+        <input
+          type="radio"
+          id="Prefiero no decirlo"
+          name="sexo"
+          value="Prefiero no decirlo" />
+        Prefiero no decirlo <br
+      /></label>
+      <label>País nacimiento del usuario</label> <br />
+      <select name="pais">
+        <option>Argentina</option>
+        <option>Brasil</option>
+        <option>Chile</option>
+        <option>Uruguay</option>
+      </select>
+      <br />
+      <button type="submit">Enviar</button>
+      <button type="reset">Borrar</button>
+    </form>
+  </body>
+</html>
