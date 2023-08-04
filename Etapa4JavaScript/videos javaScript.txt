@@ -1,0 +1,50 @@
+*Introducción a JavaScript*
+7 videos
+
+a) https://youtu.be/hA2jc-ESPIc
+b) https://youtu.be/hA2jc-ESPIc
+c) https://youtu.be/ne_vT0il3JU
+d) https://youtu.be/Ii0bbeux4TM
+e) https://youtu.be/MFsfoquA2a0
+f) https://youtu.be/AleuwaUKemY
+g) https://youtu.be/gyPzEX7jkdQ
+
+*Condicionales y bucles en JS*
+5 videos
+a) https://youtu.be/GFfieKxRxO0
+b) https://youtu.be/akIHIZWoQwM
+c) https://youtu.be/6CkrOFA9J-A
+d) https://youtu.be/_YRSMv7LC9I
+e) https://youtu.be/_OPXYjtUYzo
+
+*Funciones en JS*
+4 videos
+
+a) https://youtu.be/KFMbtcXffLo
+b) función anónima https://youtu.be/XoK_zIEOS0M
+c) función flecha  https://youtu.be/XE5kTy22qyo
+d) async await https://youtu.be/b9-63zm3rwQ
+
+
+*Dom*
+4 videos
+
+a) https://youtu.be/tNVZ3wjtnYw
+b) https://youtu.be/JoKaJwPiphg
+c) https://youtu.be/r7OkQWYkBvw
+d) https://youtu.be/VLElmkz7eHA
+
+*Comunicación y persistencia*
+4 videos
+Destructuring
+https://youtu.be/4_g-TMSjBx0
+
+Fetch Post
+https://youtu.be/U4C_VHF2qSQ
+
+Fetch Get
+https://youtu.be/BlymvIENiqg
+
+Local storage, Session storage y cookies
+https://
+https://youtu.be/pTPsPn2kpds
