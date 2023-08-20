@@ -1,33 +1,50 @@
 package persistencia;
 
+import entidades.Libro;
 import java.util.List;
-import javax.persistence.Query;
-import libreria.entidades.Libro;
 
-public class LibroDao extends DAO {
+public class LibroDAO extends DAO<Libro> {
 
-    public void persistirLibro(Libro libro) {
-        persisitrEntidad(libro);
+    @Override
+    public void persistirEntidad(Libro libro) {
+        super.persistirEntidad(libro);
     }
 
-    public void actualizarLibro(Libro libro) {
-        actualizarEstadoEntidad(libro);
+    @Override
+    public void actualizarEntidad(Libro libro) {
+        super.actualizarEntidad(libro);
     }
 
-    public List consultaGenerica(String entidad, String atributo, String variable) {
-        String jpql = "SELECT e FROM " + entidad + " e WHERE e." + atributo + " LIKE :variable";
-        Query query = em.createQuery(jpql);
-        query.setParameter("variable", "%" + variable + "%");
-        return query.getResultList();
+    @Override
+    public void borrarEntidad(Libro libro) {
+        super.borrarEntidad(libro);
     }
 
-    public List consultaLibros() {
-        String jpql = "SELECT l FROM Libro l";
-        return em.createQuery(jpql).getResultList();
+    public Libro buscarLibroISBN(Long ISBN) {
+        conectarBase();
+        Libro libro = em.find(Libro.class, ISBN);
+        desconectarBase();
+        return libro;
     }
 
-    public Libro buscarPorIsbn(long id) {
-        return em.find(Libro.class, id);
+    public List<Libro> buscarLibroTitulo(String titulo) {
+        conectarBase();
+        List<Libro> libros = em.createQuery("SELECT l FROM Libro l WHERE l.titulo = :titulo AND l.alta = TRUE").setParameter("titulo", titulo).getResultList();
+        desconectarBase();
+        return libros;
     }
 
+    public List<Libro> buscarLibroAutor(String nombre) {
+        conectarBase();
+        List<Libro> libros = em.createQuery("SELECT l FROM Libro l WHERE l.autor.id = (SELECT a.id FROM Autor a where a.nombre = :nombre AND a.alta = TRUE)").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return libros;
+    }
+
+    public List<Libro> buscarLibroEditorial(String nombre) {
+        conectarBase();
+        List<Libro> libros = em.createQuery("SELECT l FROM Libro l WHERE l.editorial.id = (SELECT e.id FROM Editorial e where e.nombre = :nombre AND e.alta = TRUE)").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return libros;
+    }
 }

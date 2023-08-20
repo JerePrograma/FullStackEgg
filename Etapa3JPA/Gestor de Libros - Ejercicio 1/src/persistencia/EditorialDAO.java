@@ -1,30 +1,43 @@
 package persistencia;
 
+import entidades.Editorial;
 import java.util.List;
-import libreria.entidades.Editorial;
 
-public class EditorialDAO extends DAO {
+public class EditorialDAO extends DAO<Editorial> {
 
-    public void persisitrEditorial(Editorial editorial) {
-
-        persisitrEntidad(editorial);
-
+    @Override
+    public void persistirEntidad(Editorial editorial) {
+        super.persistirEntidad(editorial);
     }
 
-    public void actualizarEstadoEditorial(Editorial editorial) {
-
-        actualizarEstadoEntidad(editorial);
+    @Override
+    public void actualizarEntidad(Editorial editorial) {
+        super.actualizarEntidad(editorial);
     }
 
-    public List consultarEditorial() {
-        String jpql = "SELECT e FROM Editorial e";
-        return em.createQuery(jpql).getResultList();
+    @Override
+    public void borrarEntidad(Editorial editorial) {
+        super.borrarEntidad(editorial);
     }
 
-    public List<Editorial> buscarEditorialesPorNombre(String nombre) {
-        String jpql = "SELECT e FROM Editorial e WHERE e.nombre = :nombre";
-        return em.createQuery(jpql, Editorial.class)
-                .setParameter("nombre", nombre)
-                .getResultList();
+    public Editorial buscarEditorial(Integer id) {
+        conectarBase();
+        Editorial editorial = em.find(Editorial.class, id);
+        desconectarBase();
+        return editorial;
+    }
+
+    public List<Editorial> buscarEditorialNombre(String nombre) {
+        conectarBase();
+        List<Editorial> editoriales = em.createQuery("SELECT e FROM Editorial e where e.nombre = :nombre AND e.alta = TRUE").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return editoriales;
+    }
+    
+        public List<Editorial> validarEditorialNombre(String nombre) {
+        conectarBase();
+        List<Editorial> editoriales = em.createQuery("SELECT e FROM Editorial e where e.nombre = :nombre").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return editoriales;
     }
 }

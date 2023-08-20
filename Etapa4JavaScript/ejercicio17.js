@@ -4,5 +4,6 @@
 
 let numeros = [1,2,3,7,5];
 
+numeros.splice(3,5);
 
-console.log(numeros.slice(0,3));
+console.log(numeros);

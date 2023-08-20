@@ -1,42 +1,38 @@
 package persistencia;
 
-import java.util.ArrayList;
+import entidades.Prestamo;
 import java.util.List;
-import libreria.entidades.Cliente;
-import libreria.entidades.Prestamo;
 
-public class PrestamoDao extends DAO {
+public class PrestamoDAO extends DAO<Prestamo> {
 
-    public void persistirPrestamo(Prestamo prestamo) {
-
-        persisitrEntidad(prestamo);
+    @Override
+    public void persistirEntidad(Prestamo prestamo) {
+        super.persistirEntidad(prestamo);
     }
 
-    public void actualizarEstadoPrestamo(Prestamo prestamo) {
-
-        actualizarEstadoEntidad(prestamo);
-
+    @Override
+    public void actualizarEntidad(Prestamo prestamo) {
+        super.actualizarEntidad(prestamo);
     }
 
-    public List buscarPrestamo() {
-
-        return em.createQuery("SELECT p FROM Prestamo p").getResultList();
-
+    @Override
+    public void borrarEntidad(Prestamo prestamo) {
+        super.borrarEntidad(prestamo);
     }
 
-    public Cliente buscarPorClienteId(int id) {
-        return em.find(Cliente.class, id);
+    public Prestamo buscarPrestamoId(Integer id) {
+        conectarBase();
+        Prestamo prestamo = em.find(Prestamo.class, id);
+        desconectarBase();
+        return prestamo;
     }
 
-    public List<Prestamo> buscarPrestamosPorClienteId(int id) {
-        Cliente cliente = em.find(Cliente.class, id);
-        if (cliente == null) {
-            return new ArrayList<>();
-        } else {
-            return em.createQuery("SELECT p FROM Prestamo p WHERE p.cliente.id = :clienteId", Prestamo.class)
-                    .setParameter("clienteId", id)
-                    .getResultList();
-        }
+    public List<Prestamo> buscarPrestamoCliente(long dni) {
+        conectarBase();
+        List<Prestamo> prestamos = em.createQuery("SELECT P FROM Prestamo p WHERE p.cliente.documento = :dni AND p.alta = TRUE").setParameter("dni", dni).getResultList();
+        desconectarBase();
+        return prestamos;
     }
 
+    
 }

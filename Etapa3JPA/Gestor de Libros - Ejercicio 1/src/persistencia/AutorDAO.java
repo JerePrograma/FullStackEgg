@@ -1,30 +1,43 @@
 package persistencia;
 
+import entidades.Autor;
 import java.util.List;
-import libreria.entidades.Autor;
 
-public class AutorDAO extends DAO {
+public class AutorDAO extends DAO<Autor> {
 
-    public void persistirAutor(Autor autor) {
-        persisitrEntidad(autor);
+    @Override
+    public void persistirEntidad(Autor autor) {
+        super.persistirEntidad(autor);
     }
 
-    public void actualizarEstadoAutor(Autor autor) {
-
-        actualizarEstadoEntidad(autor);
-
+    @Override
+    public void actualizarEntidad(Autor autor) {
+        super.actualizarEntidad(autor);
     }
 
-    public List buscarAutor() {
-
-        return em.createQuery("SELECT a FROM Autor a").getResultList();
-
+    @Override
+    public void borrarEntidad(Autor autor) {
+        super.borrarEntidad(autor);
     }
 
-    public List<Autor> buscarAutoresPorNombre(String nombre) {
-        String jpql = "SELECT a FROM Autor a WHERE a.nombre = :nombre";
-        return em.createQuery(jpql, Autor.class)
-                .setParameter("nombre", nombre)
-                .getResultList();
+    public Autor buscarAutor(Integer id) {
+        conectarBase();
+        Autor autor = em.find(Autor.class, id);
+        desconectarBase();
+        return autor;
+    }
+
+    public List<Autor> buscarAutorNombre(String nombre) {
+        conectarBase();
+        List<Autor> autores = em.createQuery("SELECT a FROM Autor a where a.nombre = :nombre AND a.alta = TRUE").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return autores;
+    }
+
+    public List<Autor> validarNombreAutor(String nombre) {
+        conectarBase();
+        List<Autor> autores = em.createQuery("SELECT a FROM Autor a where a.nombre = :nombre").setParameter("nombre", nombre).getResultList();
+        desconectarBase();
+        return autores;
     }
 }
