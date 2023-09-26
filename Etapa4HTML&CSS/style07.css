@@ -1,19 +1,15 @@
-/*Crear un archivo HTML y un archivo CSS, vamos a linkear el archivo CSS al archivo HTML y
-vamos a hacer lo mismo que el primer ejercicio, pero ahora la página va a tener un color
-de fondo a elección, el encabezado H1 tiene que tener una fuente a elección y estar
-centrado, lo mismo para el encabezado H2, y por ultimo los párrafos deben tener una
-fuente a elección, deben tener un color a elección y deben estar centrados a la izquierda.*/
-h1,
-h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
+body {
+  background-color: aquamarine;
 }
 
-body {
-  background-color: thistle;
+h1,
+h2 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
-p {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
     text-align: left;
 }

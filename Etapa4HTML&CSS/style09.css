@@ -1,77 +1,63 @@
-#titulo {
-  color: rgb(51, 132, 125);
+h1 {
+  color: cadetblue;
 }
-
 strong {
   color: red;
 }
 
 .destacado {
-  color: orange;
+  color: burlywood;
 }
 
-#subtitulo {
+h2 {
   color: blue;
 }
 
 a {
   color: red;
 }
-em {
+a em {
   color: blue;
 }
 
-.especial {
-  color: purple;
-}
-
-table,
-td,
-tr,
-th {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 3px;
+p .especial {
+  color: blueviolet;
 }
 
 caption {
   display: none;
 }
 
-thead {
-  color: orange;
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: solid black 1px;
+  text-align: center;
 }
 
-tfoot {
-  color: red;
-}
-
-th.especial {
+.especial {
   color: orange;
-}
-th {
-  color: red;
 }
 td {
   color: green;
 }
 
-td > em {
-  color: green;
+th {
+  color: red;
 }
 
-td > strong {
+td strong {
   color: orange;
 }
 
-#adicional {
-  color: rgb(161, 146, 53);
+#adicional p {
+  color: rgb(157, 165, 80);
+}
+#adicional #especial {
+  color: fuchsia;
 }
 
-span#especial {
-    color : fuchsia;
-}
-
-#adicional > p > a{
-    color: green;
+#adicional a {
+  color: lightgreen;
 }

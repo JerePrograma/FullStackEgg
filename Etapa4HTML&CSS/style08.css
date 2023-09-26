@@ -1,27 +1,11 @@
-/*Definir las reglas CSS que permiten mostrar los enlaces con los siguientes estilos:
-• En su estado normal, los enlaces se muestran de color rojo #CC0000.
-• Cuando el usuario pasa su ratón sobre el enlace, se muestra con un color de fondo
-rojo #CC0000 y la letra de color blanco #FFF.
-• Los enlaces visitados se muestran en color gris claro #CCC*/
-
-/* link sin visitar */
-a:link {
+a {
   color: #cc0000;
 }
-/* link visitado*/
-a:visited {
-  color: #CCC;
-}
-/* mouse sobre el link*/
 a:hover {
+  background-color: #cc0000;
   color: #FFF;
-  background: #CC0000;
-}
-/* link clickeado */
-a:active {
-  color: blue;
 }
 
-body{
-    background-color: chocolate;
+a:visited {
+    color: #CCC;
 }
