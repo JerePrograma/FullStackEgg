@@ -6,6 +6,7 @@ import com.jere.ejercicionoticias.excepciones.MiException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class NoticiaServicio {
     @Autowired
     private NoticiaRepositorio noticiaRepositorio;
 
+    @Transactional
     public void crearNoticia(String titulo, String cuerpo) throws MiException {
         validar(titulo, cuerpo);
         Noticia noticia = new Noticia();

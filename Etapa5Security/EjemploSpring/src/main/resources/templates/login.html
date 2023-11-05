@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div
+      th:if="${error != null}"
+      class="card text-white bg-danger mb-3 mensajeError"
+    >
+      <div class="card-body">
+        <h5 class="card-title">Error!</h5>
+        <p class="card-text" th:text="${error}"></p>
+      </div>
+    </div>
+    <div
+      th:if="${exito != null}"
+      class="card text-white bg-success mb-3 mt-3 mensajeExito"
+    >
+      <div class="card-body">
+        <h5 class="card-title">Exito!</h5>
+        <p class="card-text" th:text="${exito}"></p>
+      </div>
+    </div>
+    <form th:action="@{/logincheck}" method="POST">
+      <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="email"
+          th:value="${email}"
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          name="password"
+          placeholder="contraseña"
+          th:value="${password}"
+        />
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

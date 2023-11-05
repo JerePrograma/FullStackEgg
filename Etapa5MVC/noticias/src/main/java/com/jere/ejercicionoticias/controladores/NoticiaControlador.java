@@ -29,7 +29,6 @@ public class NoticiaControlador {
     public String registro(@RequestParam String titulo, @RequestParam String cuerpo, ModelMap modelo) {
         try {
             noticiaServicio.crearNoticia(titulo, cuerpo);
-
             modelo.put("éxito", "Se cargó correctamente la noticia");
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
@@ -71,5 +70,13 @@ public class NoticiaControlador {
         noticiaServicio.borrarNoticia(id);
         modelo.put("éxito", "Se eliminó correctamente la noticia");
         return "index.html";
+    }
+
+    @GetMapping("/detalle/{id}")
+    public String detalle(@PathVariable(required = false) Long id, ModelMap modelo) {
+        Noticia noticia = noticiaServicio.getOne(id);
+
+        modelo.addAttribute("noticia", noticia);
+        return "noticia_detalle.html";
     }
 }

@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="utf-8">
-        <title>Noticias Egg</title>
+        <title>Detalle de Noticia</title>
         <link href="css/one-page-wonder.min.css" rel="stylesheet">
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/index.css">
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
@@ -29,7 +28,6 @@
                             Noticias
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                             <li><a class="dropdown-item" th:href="@{/noticia/registrar}">Crear Noticia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" th:href="@{/noticia/lista}">Listar Noticias</a></li>
@@ -41,11 +39,14 @@
 
         <header class="header">
             <section class="contenedorMain">
-                <div class="tituloBiblioteca">
-                    <a class="navbar-brand" href="#">NOTICIAS DE EGG</a>
-                </div>
-                <div class="container contenedorLibros">
-                    <p class="tituloLibros">Encontrá todas las noticias Aquí!</p>
+                <div class="container contenedorNoticia mt-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <!-- Aquí puedes mostrar los detalles de la noticia -->
+                            <h2 th:text="${noticia.titulo}"></h2>
+                            <p th:text="${noticia.cuerpo}"></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-circle-1 bg-circle"></div>
@@ -54,46 +55,6 @@
                 <div class="bg-circle-4 bg-circle"></div>
             </section>
         </header>
-
-        <!-- Aquí empieza la sección de tarjetas de noticias -->
-        <section class="container mt-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Noticias Recientes</h2>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Iteramos sobre la lista de noticias -->
-                <div th:each="noticia : ${noticias}" th:if="${noticia.alta == true}" class="col-md-4 mb-4">
-                    <div class="card">
-                        <!-- Título de la noticia -->
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${noticia.titulo}"></h5>
-                            <!-- Contenido de la noticia (puedes ajustar esto) -->
-                            <p class="card-text" th:text="${noticia.cuerpo}"></p>
-
-                            <!-- Enlace a la página de detalle de la noticia -->
-                            <a th:href="@{/noticia/detalle/{id}(id=${noticia.id})}" class="btn btn-primary">Leer Más</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Fin de la sección de tarjetas de noticias -->
-
-        <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-            <div class="card-body">
-                <h5 class="card-title">Exito</h5>
-                <p class="card-text" th:text="${exito}"></p>
-            </div>
-        </div>
-        <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
-            <div class="card-body">
-                <h5 class="card-title">Error ð</h5>
-                <p class="card-text" th:text="${error}"></p>
-            </div>
-        </div>
 
         <footer class="text-muted py-5">
             <div class="containerFooter">

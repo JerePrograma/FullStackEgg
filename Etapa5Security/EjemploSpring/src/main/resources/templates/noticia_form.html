@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment>
+    <meta charset="utf-8" >
+    <title>Noticias Egg</title>
+</head>
+  <body>
+    <form th:action="@{/noticia/registro/}" method="POST">
+      <div>
+        <label for="titulo">
+          Titulo
+          <input type="text" name="titulo" placeholder="Titulo" />
+        </label>
+        <label for="cuerpo">
+          Cuerpo
+          <input type="text" name="cuerpo" placeholder="Cuerpo" />
+        </label>
+        <button type="submit">Enviar Formulario</button>
+      </div>
+    </form>
+   </body>
+</html>
